@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  app:
+    image: codechub/nestjs-api:1.1
+    platform: linux/amd64
+    ports:
+      - '3000:3000'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SUPABASE_URL=https://ihduwgullczorkfvtshy.supabase.co
+      - SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloZHV3Z3VsbGN6b3JrZnZ0c2h5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2NzgwNjYsImV4cCI6MjA2NDI1NDA2Nn0.Aom6011IO-5Yt-d_Ybwltp54QlY5YxNrJryHcCLjZ0k
+    restart: always
