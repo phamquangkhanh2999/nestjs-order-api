@@ -32,7 +32,7 @@ COPY --from=builder /app/dist ./dist
 
 # Copy các file cần thiết (nếu có)
 # COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/.env ./
+# COPY --from=builder /app/.env ./
 
 # Mở port ứng dụng (mặc định NestJS dùng 3000)
 EXPOSE 3000
