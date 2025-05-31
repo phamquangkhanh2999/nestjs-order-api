@@ -5,7 +5,7 @@ services:
     region: oregon # hoặc frankfurt, singapore,...
     plan: free # hoặc starter, standard...
     buildCommand: npm install && npm run build
-    startCommand: node dist/main.js
+    startCommand: npm run start
     envVars:
       - key: NODE_ENV
         value: production
