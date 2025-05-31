@@ -1,11 +1,9 @@
 services:
   - type: web
     name: nestjs-order-api
-    env: node
-    region: oregon # hoặc frankfurt, singapore,...
-    plan: free # hoặc starter, standard...
-    buildCommand: npm install && npm run build
-    startCommand: npm run start
+    env: docker
+    plan: free
+    region: oregon
     envVars:
       - key: NODE_ENV
         value: production
