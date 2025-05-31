@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: nestjs-order-api
+    env: node
+    region: oregon # hoặc frankfurt, singapore,...
+    plan: free # hoặc starter, standard...
+    buildCommand: npm install && npm run build
+    startCommand: node dist/main.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        value: https://ihduwgullczorkfvtshy.supabase.co
+      - key: SUPABASE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloZHV3Z3VsbGN6b3JrZnZ0c2h5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2NzgwNjYsImV4cCI6MjA2NDI1NDA2Nn0.Aom6011IO-5Yt-d_Ybwltp54QlY5YxNrJryHcCLjZ0k
