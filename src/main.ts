@@ -52,19 +52,19 @@ async function bootstrap() {
     // )
     .setLicense('MIT License', 'https://opensource.org/licenses/MIT')
     .addServer('http://localhost:3000', 'Development Server')
-    // .addServer('https://api-staging.your-domain.com', 'Staging Server')
+    .addServer('https://nestjs-order-api.onrender.com', 'Staging Server')
     // .addServer('https://api.your-domain.com', 'Production Server')
-    .addBearerAuth(
-      {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-        name: 'JWT',
-        description: 'Enter JWT token',
-        in: 'header',
-      },
-      'JWT-auth',
-    )
+    // .addBearerAuth(
+    //   {
+    //     type: 'http',
+    //     scheme: 'bearer',
+    //     bearerFormat: 'JWT',
+    //     name: 'JWT',
+    //     description: 'Enter JWT token',
+    //     in: 'header',
+    //   },
+    //   'JWT-auth',
+    // )
     .addApiKey(
       {
         type: 'apiKey',
@@ -74,15 +74,15 @@ async function bootstrap() {
       },
       'API-Key',
     )
-    .addTag('auth', 'Xác thực và phân quyền')
-    .addTag('users', 'Quản lý người dùng')
-    .addTag('products', 'Quản lý sản phẩm')
-    .addTag('categories', 'Quản lý danh mục')
+    // .addTag('auth', 'Xác thực và phân quyền')
+    // .addTag('users', 'Quản lý người dùng')
+    // .addTag('products', 'Quản lý sản phẩm')
+    // .addTag('categories', 'Quản lý danh mục')
     .addTag('orders', 'Quản lý đơn hàng')
-    .addTag('payments', 'Thanh toán')
-    .addTag('inventory', 'Quản lý kho')
-    .addTag('shipping', 'Vận chuyển')
-    .addTag('analytics', 'Báo cáo và thống kê')
+    // .addTag('payments', 'Thanh toán')
+    // .addTag('inventory', 'Quản lý kho')
+    // .addTag('shipping', 'Vận chuyển')
+    // .addTag('analytics', 'Báo cáo và thống kê')
     .build();
   const document = SwaggerModule.createDocument(app, config, {
     operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
