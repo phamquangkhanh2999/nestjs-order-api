@@ -10,6 +10,7 @@ import { Order } from './entities/order.entity';
 @Injectable()
 export class OrdersService {
   async createOrder(dto: CreateOrderDto): Promise<ApiResponse<Order | null>> {
+    console.log('[LOG] ~ OrdersService ~ createOrder ~ dto:', dto);
     try {
       const result = await supabase
         .from('orders')

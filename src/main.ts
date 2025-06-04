@@ -3,12 +3,16 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import { ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { LoggingInterceptor } from './common/interfaces/logging.interceptor';
 
 async function bootstrap() {
+  const logger = new Logger('Bootstrap');
   const app = await NestFactory.create(AppModule);
+  // Global logging interceptor - BẮT TẤT CẢ REQUESTS
+  app.useGlobalInterceptors(new LoggingInterceptor());
   app.enableCors();
   app.useGlobalPipes(
     new ValidationPipe({
@@ -117,7 +121,7 @@ async function bootstrap() {
     customfavIcon: '/favicon.ico',
   });
   await app.listen(3000);
-  console.log(`🚀 Application is running on: http://localhost:3000`);
-  console.log(`📚 Swagger UI is available at: http://localhost:3000/api-docs`);
+  logger.log(`🚀 Application is running on: http://localhost:3000`);
+  logger.log(`📚 Swagger UI is available at: http://localhost::3000/api-docs`);
 }
 bootstrap();
