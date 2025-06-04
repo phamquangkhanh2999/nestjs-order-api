@@ -29,13 +29,13 @@ export class OrdersController {
   @ApiOperation({
     summary: 'Tạo đơn hàng mới',
     description: `
-      Tạo một đơn hàng mới với thông tin chi tiết:
-      - Thông tin khách hàng
-      - Danh sách sản phẩm và số lượng
-      - Địa chỉ giao hàng
-      - Phương thức thanh toán
-      - Ghi chú đặc biệt (tùy chọn)
-    `,
+    Tạo một đơn hàng mới với thông tin chi tiết:
+    - Thông tin khách hàng
+    - Danh sách sản phẩm và số lượng
+    - Địa chỉ giao hàng
+    - Phương thức thanh toán
+    - Ghi chú đặc biệt (tùy chọn)
+  `,
   })
   @ApiBody({
     type: CreateOrderDto,
@@ -53,6 +53,12 @@ export class OrdersController {
           ward: 'Phúc Xá',
           address: '123 Phố Huế',
           product_note: 'Màu đen, giao hàng nhanh',
+          quantity: 2,
+          utm_source: 'google',
+          utm_medium: 'cpc',
+          utm_campaign: 'spring_sale',
+          utm_content: 'banner_top',
+          utm_term: 'giay_the_thao',
         },
       },
     },
@@ -73,20 +79,23 @@ export class OrdersController {
             },
             orderNumber: { type: 'string', example: 'ORD-2024-000001' },
             status: { type: 'string', example: 'PENDING' },
-            customerId: {
+            name: { type: 'string', example: 'Nguyen Van A' },
+            phone: { type: 'string', example: '0909123456' },
+            message: { type: 'string', example: 'Tôi cần tư vấn về sản phẩm' },
+            state: { type: 'string', example: 'Hà Nội' },
+            district: { type: 'string', example: 'Ba Đình' },
+            ward: { type: 'string', example: 'Phúc Xá' },
+            address: { type: 'string', example: '123 Phố Huế' },
+            product_note: {
               type: 'string',
-              example: '123e4567-e89b-12d3-a456-426614174000',
+              example: 'Màu đen, giao hàng nhanh',
             },
-            totalAmount: { type: 'number', example: 50000000 },
-            discountAmount: { type: 'number', example: 2000000 },
-            shippingFee: { type: 'number', example: 50000 },
-            finalAmount: { type: 'number', example: 48050000 },
-            paymentMethod: { type: 'string', example: 'CREDIT_CARD' },
-            shippingMethod: { type: 'string', example: 'STANDARD' },
-            estimatedDelivery: {
-              type: 'string',
-              example: '2024-01-20T09:00:00Z',
-            },
+            quantity: { type: 'number', example: 2 },
+            utm_source: { type: 'string', example: 'google' },
+            utm_medium: { type: 'string', example: 'cpc' },
+            utm_campaign: { type: 'string', example: 'spring_sale' },
+            utm_content: { type: 'string', example: 'banner_top' },
+            utm_term: { type: 'string', example: 'giay_the_thao' },
             createdAt: { type: 'string', example: '2024-01-15T10:30:00Z' },
             updatedAt: { type: 'string', example: '2024-01-15T10:30:00Z' },
           },
@@ -107,9 +116,15 @@ export class OrdersController {
           type: 'array',
           items: { type: 'string' },
           example: [
-            'customerId must be a valid UUID',
-            'items should not be empty',
-            'paymentMethod must be a valid enum value',
+            'name should not be empty',
+            'phone must be a valid phone number',
+            'message should not be empty',
+            'state should not be empty',
+            'district should not be empty',
+            'ward should not be empty',
+            'address should not be empty',
+            'product_note should not be empty',
+            'quantity must be a number',
           ],
         },
         error: { type: 'string', example: 'Bad Request' },
