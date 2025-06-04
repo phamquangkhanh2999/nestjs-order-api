@@ -8,21 +8,27 @@ export class CreateOrderDto {
   phone: string;
 
   @IsString()
+  @IsOptional()
   message: string;
 
   @IsString()
+  @IsOptional()
   state: string;
 
   @IsString()
+  @IsOptional()
   district: string;
 
   @IsString()
+  @IsOptional()
   ward: string;
 
   @IsString()
+  @IsOptional()
   address: string;
 
   @IsString()
+  @IsOptional()
   product_note: string;
 
   @IsNumber()
@@ -32,6 +38,10 @@ export class CreateOrderDto {
   @IsString()
   @IsOptional()
   utm_source?: string; // 15.
+
+  @IsString()
+  @IsOptional()
+  form_url?: string; // form URL
 
   @IsString()
   @IsOptional()
