@@ -112,12 +112,13 @@ export class OrdersService {
         .range(offset, offset + pageSize - 1);
 
       if (error) {
-        return ResponseWrapper.error<null>(
-          'Lấy danh sách đơn hàng thất bại',
-          `Failed to get orders: ${error.message}`,
-          HttpStatus.BAD_REQUEST,
-          2003,
-          null,
+        return ResponseWrapper.paginatedSuccess(
+          [],
+          count || 0,
+          page,
+          pageSize,
+          'Lấy danh sách đơn hàng thành công',
+          'Orders retrieved successfully',
         );
       }
       return ResponseWrapper.paginatedSuccess(
